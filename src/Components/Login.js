@@ -59,8 +59,9 @@ function Login({cookies,setCookie}){
           
 
             {obj.user.data && Object.keys(obj.user.data).length>0 &&(
+              
              <Alert variant="filled" severity="success">
-              Valid
+              Valid  {console.log(cookies)}
              </Alert>
             )}
 
