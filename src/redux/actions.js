@@ -70,6 +70,7 @@ const Fetch_Login = (email,password,navigate)=>{
 
 
 const Fetch_Signup = ({Name , Email , Phone , Password  , DOB , Type,Image})=>{
+    console.log(Email)
     return (dispatch)=>{
         fetch("https://codsoft-1.onrender.com/auth/SignUp",{
             method:"POST",

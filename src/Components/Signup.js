@@ -30,10 +30,10 @@ function SignUp(){
     const val = useRef();
     const val2 = useRef();
 
-    const ValidateByEntry = async (form,entry1,entry2,error)=>{
+    const ValidateByEntry = async (obj,entry1,entry2,error)=>{
       switch(entry1){
         case 'Phone':
-          if(validatePhoneNumber(entry2)) form[entry1]=entry2
+          if(validatePhoneNumber(entry2)) obj[entry1]=entry2
           else error.push("Invalid Phone Number !")
           break;
 
@@ -44,7 +44,7 @@ function SignUp(){
 
            try{
              const dataurl = await convertToBase64(entry2,"image")
-             form[entry1]=dataurl;
+             obj[entry1]=dataurl;
            }
            catch(err){
              error.push(err)
@@ -55,17 +55,17 @@ function SignUp(){
           break;
 
         case 'DOB':
-          if (new Date().getFullYear()-new Date(entry2).getFullYear() >= 18)form[entry1]=entry2;
+          if (new Date().getFullYear()-new Date(entry2).getFullYear() >= 18)obj[entry1]=entry2;
           else error.push(" User Must Be 18 or Older ! ")
           break;
 
         case 'Password':
-          if(validatePassword(entry2)) form[entry1]=entry2
+          if(validatePassword(entry2)) obj[entry1]=entry2
           else error.push("Invalid Password !");
           break;
 
         case 'Email':
-          if(validateEmail(entry2)) form[entry1]=entry2
+          if(validateEmail(entry2)) obj[entry1]=entry2
           else error.push("Invalid Email Format !")
  
         default:
@@ -82,8 +82,6 @@ function SignUp(){
       let obj={};
       let error=[];
 
-      
-
       for(let entry of form){
    
         await ValidateByEntry(obj,entry[0],entry[1],error)
@@ -93,26 +91,12 @@ function SignUp(){
       console.log(obj)
  
     obj['Type'] = val2.current.selectedOptions[0].value;
+    console.log(error)
     
-    if(!error) dispatch(Fetch_Signup(obj))
+    if(!error.length) dispatch(Fetch_Signup(obj))
     else dispatch(Error_Handler(error))
-
-     
      }
 
-      
-
-     
-     
-    // dispatch(Fetch_Signup(obj))
-
-
-
-
-      //custom validation 
-
-      // submit data
-     // dispatch(Fetch_Login(obj.email,obj.password))
       
     
 
