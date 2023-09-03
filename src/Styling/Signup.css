@@ -1,0 +1,81 @@
+
+.col-6{
+    width:50%;
+    max-width:50%;
+    display:flex;
+    flex:1 0 auto;
+    min-height:100%
+}
+
+.Content-Signup{
+    display:flex;
+    flex-flow:row nowrap;
+    justify-content: stretch;
+    align-items:stretch;
+    padding:0px;
+    flex : 1 0 auto;
+}
+
+.content{
+   position:relative;
+   min-width:100%;
+   min-height:100%;
+    background:url("/public/work.jpg");
+    background-size:100% 100%;
+    background-repeat:no-repeat;
+   
+
+}
+
+.f{ position:absolute;
+    top:0px;
+    left:0px;
+    color:white;
+    width:100%;
+    z-index:99999999999999999;
+    line-height:1.8;
+    padding:20px;
+    min-height:100%;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+}
+
+.back-wrapper{
+    position:absolute;
+    top:0px;
+    left:0px;
+    background:black;
+    min-height:100%;
+    opacity:0.7;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:white;
+    
+}
+
+.back-wrapper{min-width:100%;}
+
+.form-wrapper-signup{width:100%;}
+.Form-Signup{
+    background:white;
+    border:none !important;
+    display:flex;
+    flex-flow:column nowrap;
+    padding:20px;
+}
+
+.Form-Signup input , .Form-Signup select , .Form-Signup textarea{
+    background:#e5e7eb;
+    /*background:#6c63ff; */
+    color:black;
+}
+.Form-Signup textarea{
+    padding:20px;
+}
+form::placeholder  {
+    color: black;
+    opacity: 1; /* Firefox */
+}
+
