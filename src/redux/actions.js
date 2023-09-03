@@ -48,7 +48,7 @@ const Signup_Success = (data)=>{
 
 const Fetch_Login = (email,password,navigate)=>{
     return (dispatch)=>{
-        fetch("https://codsoft-1.onrender.com/auth/SignIn",{
+        fetch("/auth/SignIn",{
             method:"POST",
             withCredentials:true,
             headers:{
@@ -72,7 +72,7 @@ const Fetch_Login = (email,password,navigate)=>{
 const Fetch_Signup = ({Name , Email , Phone , Password  , DOB , Type,Image})=>{
     console.log(Email)
     return (dispatch)=>{
-        fetch("https://codsoft-1.onrender.com/auth/SignUp",{
+        fetch("/auth/SignUp",{
             method:"POST",
             headers:{
                 "Content-Type":"application/json"
@@ -91,7 +91,7 @@ const Fetch_Signup = ({Name , Email , Phone , Password  , DOB , Type,Image})=>{
 
 const fetch_categories = ()=>{
     return (dispatch)=>{
-        fetch("https://codsoft-1.onrender.com/categories").then(res=>res.json()).then((res)=>{const map = new Map(Object.entries(res.categories));  dispatch({
+        fetch("/categories").then(res=>res.json()).then((res)=>{const map = new Map(Object.entries(res.categories));  dispatch({
             type:"FETCH_CATEGORIES_ALL",
             payload:map
     })})
@@ -101,7 +101,7 @@ const fetch_categories = ()=>{
 
 const fetch_job_titles = (obj)=>{
     return (dispatch)=>{
-        fetch(`https://codsoft-1.onrender.com/job-titles/`).then(res=> res.json()).then((res)=> {const map = new Map(Object.entries(res.jobs)); dispatch({
+        fetch(`job-titles/`).then(res=> res.json()).then((res)=> {const map = new Map(Object.entries(res.jobs)); dispatch({
             type:"FETCH_JOBS_ALL",
             payload:map
         })})
@@ -117,7 +117,7 @@ const fetch_jobs_request = ()=>{
 const fetch_jobs = (page_no=1,obj)=>{
     return (dispatch)=>{
         dispatch(fetch_jobs_request())
-        fetch(`https://codsoft-1.onrender.com/jobs?page_no=${page_no}&${obj ? 'Country='+obj.Country+ '&City='+ obj.City+'&Title='+obj.Title+'&Category='+obj.Category:'/'  }`).then(res=> res.json()).then((res)=> {
+        fetch(`/jobs?page_no=${page_no}&${obj ? 'Country='+obj.Country+ '&City='+ obj.City+'&Title='+obj.Title+'&Category='+obj.Category:'/'  }`).then(res=> res.json()).then((res)=> {
          setTimeout(()=>{
             dispatch({
                 type:"GET_JOBS",
@@ -131,7 +131,7 @@ const fetch_jobs = (page_no=1,obj)=>{
 const fetch_job = (job_id)=>{
   return (dispatch)=>{
     dispatch(fetch_jobs_request());
-    fetch(`https://codsoft-1.onrender.com/job/?id=${job_id}`).then((res)=>res.json()).then((res)=>{
+    fetch(`/job/?id=${job_id}`).then((res)=>res.json()).then((res)=>{
         dispatch({
             type:"GET_JOBS",
             payload:{records:res.jobs}
@@ -146,7 +146,7 @@ const fetch_job = (job_id)=>{
 const fetch_my_jobs = (userID)=>{ 
     return (dispatch)=>{
     dispatch(fetch_jobs_request())
-    fetch(`https://codsoft-1.onrender.com/jobs/app/?id=${userID}`).then(res=> Promise.all([res.status,res.json()])).then(([status,res])=> {
+    fetch(`/jobs/app/?id=${userID}`).then(res=> Promise.all([res.status,res.json()])).then(([status,res])=> {
      if(status==200){
         setTimeout(()=>{
            dispatch({
@@ -173,7 +173,7 @@ const clear_jobs = ()=>{
 
 const fetch_countries = ()=>{
     return (dispatch) =>{
-        fetch("https://codsoft-1.onrender.com/countries").then(res=>res.json()).then(res=>{const map = new Map(Object.entries(res.countries));
+        fetch("/countries").then(res=>res.json()).then(res=>{const map = new Map(Object.entries(res.countries));
             dispatch({
                 type:"FETCH_COUNTRIES",
                 payload:map
@@ -185,7 +185,7 @@ const fetch_countries = ()=>{
 
 const fetch_cities = (country)=>{
     return (dispatch)=>{
-        fetch(`https://codsoft-1.onrender.com/cities/?country=${country}`).then(res=> res.json()).then(res=>{
+        fetch(`/cities/?country=${country}`).then(res=> res.json()).then(res=>{
             const map = new Map(Object.entries(res.cities));
             dispatch({
                 type:"FETCH_CITIES",
@@ -197,7 +197,7 @@ const fetch_cities = (country)=>{
 
 const Change_data = (obj)=>{
     return (dispatch)=>{
-        fetch("https://codsoft-1.onrender.com/role/Edit/Profile",{
+        fetch("/role/Edit/Profile",{
             method:"POST",
             credentials:"include",
             headers:{
