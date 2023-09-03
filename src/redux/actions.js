@@ -50,7 +50,7 @@ const Fetch_Login = (email,password,navigate)=>{
     return (dispatch)=>{
         fetch("https://codsoft-1.onrender.com/auth/SignIn",{
             method:"POST",
-            withCredentials:true,
+            credentials:"include",
             headers:{
                 "Content-Type":"application/json"
             },
