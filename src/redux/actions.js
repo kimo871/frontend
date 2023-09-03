@@ -48,7 +48,7 @@ const Signup_Success = (data)=>{
 
 const Fetch_Login = (email,password,navigate)=>{
     return (dispatch)=>{
-        fetch("/auth/SignIn",{
+        fetch("https://codsoft-1.onrender.com/auth/SignIn",{
             method:"POST",
             withCredentials:true,
             headers:{
