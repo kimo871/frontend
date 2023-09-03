@@ -11,7 +11,7 @@ function JobDetails({cookies , setCookie , removeCookie}){
     let navigate = useNavigate()
     const {id}=useParams();
     useEffect(()=>{
-      dispatch(logger("http://localhost:8000/auth/login"))
+      dispatch(logger("https://codsoft-1.onrender.com/auth/login"))
       dispatch(fetch_job(id))
       console.log(obj) 
     },[])

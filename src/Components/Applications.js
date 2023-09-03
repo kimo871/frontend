@@ -18,7 +18,7 @@ function Applications ({setCookie , cookies}){
   useEffect(()=>{
     if(!cookies["email"]  || !cookies["access_token"] || !cookies["refresh_token"] || !cookies["user_id"])navigate("/auth/SignIn")
     else{
-    dispatch(logger("http://localhost:8000/role/MyJobs",navigate))
+    dispatch(logger("https://codsoft-1.onrender.com/role/MyJobs",navigate))
     dispatch(fetch_applications(id))
     return ()=>{
       dispatch(Clear())

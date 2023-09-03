@@ -26,7 +26,7 @@ function Post({cookies , setCookie , removeCookie}){
        if(!cookies.email || !cookies["access_token"] || !cookies["refresh_token"] || !cookies["user_id"])navigate("/auth/SignIn")
        else{
         console.log(obj)
-        dispatch(logger("http://localhost:8000/role/jobs/post",navigate))
+        dispatch(logger("https://codsoft-1.onrender.com/role/jobs/post",navigate))
         dispatch(fetch_job_titles())
         dispatch(fetch_categories())
         dispatch(fetch_countries())

@@ -24,7 +24,7 @@ function Jobs ({setCookie,cookies}){
     useEffect(()=>{
       dispatch(Clear())
        dispatch(Fetch_Request())
-       dispatch(logger("http://localhost:8000/auth/login"))
+       dispatch(logger("https://codsoft-1.onrender.com/auth/login"))
        dispatch(fetch_categories())
        dispatch(fetch_job_titles())
        dispatch(fetch_countries())
