@@ -15,10 +15,11 @@ import {useCookies} from 'react-cookie'
 
 function App() {
 
-  let [cookies , setCookie , removeCookie] = useCookies(["email"]);
+  let [cookies , setCookie , removeCookie] = useCookies();
 
   useEffect(()=>{
   console.log("BR")
+  setCookie("email","",{ sameSite: 'none', secure: true })
   },[])
 
 
