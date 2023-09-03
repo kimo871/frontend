@@ -15,7 +15,7 @@ import {useCookies} from 'react-cookie'
 
 function App() {
 
-  let [cookies , setCookie , removeCookie] = useCookies();
+  let [cookies , setCookie , removeCookie] = useCookies(["email","access_token","refresh_token","user_id"]);
 
   useEffect(()=>{
   console.log("BR")
