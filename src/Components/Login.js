@@ -20,6 +20,7 @@ function Login({cookies,setCookie}){
      return ()=>{
       dispatch(Clear())
      }
+     console.log(cookies)
    },[cookies])
 
   const navigate = useNavigate()
