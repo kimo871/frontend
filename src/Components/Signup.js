@@ -69,6 +69,7 @@ function SignUp(){
           else error.push("Invalid Email Format !")
  
         default:
+          obj[entry1]=entry2;
           break;
       }
     }
