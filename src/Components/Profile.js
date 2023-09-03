@@ -11,7 +11,7 @@ import Footer from './Footer'
 import Navbar from './Navbar'
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {Fetch_Request  ,logger , Error_Handler , Clear, Change_data , validatePhoneNumber , convertToBase64 } from '../redux/actions'
+import {Fetch_Request  ,logger , Error_Handler , Clear, Change_data , validatePhoneNumber , validateEmail } from '../redux/actions'
 
 import EmailIcon from '@mui/icons-material/Email';
 
@@ -35,15 +35,16 @@ function Profile({cookies , setCookie , removeCookie}){
       dispatch(Clear())
       let formData={};
       let form = new FormData(e.target)
+      let error = [];
       
       for(let entry of form){
-        if(entry[0]=="Cv" && entry[1].size==0) entry[1]="";
-          console.log(entry[1])
-          if(entry[1]){ValidateEntry(formData , entry[0],entry[1])}
-         }
-         if(formData){
-          console.log(formData)
+        ValidateEntry(form,entry[0],entry[1],error)
+      }
+         if(!error){
           dispatch(Change_data(formData))
+         }
+         else{
+          dispatch(Error_Handler(error))
          }
   
         console.log(formData)
@@ -51,23 +52,25 @@ function Profile({cookies , setCookie , removeCookie}){
 
     
 
-    let  ValidateEntry = async (form,entry1,entry2)=>{
+    let  ValidateEntry = async (form,entry1,entry2,error)=>{
       switch(entry1){
         
 
         case "Phone" :
-          if(!validatePhoneNumber(entry2)){dispatch(Error_Handler(["Phone Number Not Valid !"])); return false;}
-          else form[entry1]=entry2
+          if(entry2 && !validatePhoneNumber(entry2)){error.push("Phone Number Not Valid !");}
+          else form[entry1]=entry2;
+          break;
 
         case "Name":
-          form[entry1]=entry2;
-          return true
+          if(entry2)form[entry1]=entry2;
+          break;
 
         case "Email":
+          if(entry2 && validateEmail(entry2)) form[entry1]=entry2
+          else error.push("Invalid Phone Number !")
           form[entry1]=entry2;
-      
-          
-        
+          break;
+
         default :
          break;
         }

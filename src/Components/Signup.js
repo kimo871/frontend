@@ -9,7 +9,7 @@ import {useRef , useState} from 'react'
 
 import Navbar from './Navbar'
 
-import {Fetch_Signup , convertToBase64 , Error_Handler , validatePhoneNumber , Clear} from "../redux/actions"
+import {Fetch_Signup , convertToBase64 , Error_Handler , validatePhoneNumber , validateEmail , validatePassword , Clear} from "../redux/actions"
 
 
 
@@ -60,8 +60,14 @@ function SignUp(){
           break;
 
         case 'Password':
-          
+          if(validatePassword(entry2)) form[entry1]=entry2
+          else error.push("Invalid Password !");
+          break;
 
+        case 'Email':
+          if(validateEmail(entry2)) form[entry1]=entry2
+          else error.push("Invalid Email Format !")
+ 
         default:
           break;
       }
@@ -85,12 +91,14 @@ function SignUp(){
       }
 
       console.log(obj)
+ 
+    obj['Type'] = val2.current.selectedOptions[0].value;
+    
+    if(!error) dispatch(Fetch_Signup(obj))
+    else dispatch(Error_Handler(error))
 
-      dispatch(Error_Handler(error))
-
-    }
-       
-      //obj['Type'] = val2.current.selectedOptions[0].value;
+     
+     }
 
       
 

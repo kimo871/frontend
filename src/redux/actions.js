@@ -335,9 +335,19 @@ const convertToBase64 = (file,Type)=>{
   }
 
   function validatePhoneNumber(input_str) {
-    var re = /^\(?(\d{3})\)?[- ]?(\d{4})[- ]?(\d{4})$/;
+    let re = /^\(?(\d{3})\)?[- ]?(\d{4})[- ]?(\d{4})$/;
   
     return re.test(input_str);
+  }
+
+  function validatePassword(input_str){
+    let re = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    return re.test(input_str)
+  }
+
+  function validateEmail(input_str){
+    let re = /(?:[a-z0-9+!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/gi
+    return re.test(input_str)
   }
 
 
@@ -347,5 +357,5 @@ const convertToBase64 = (file,Type)=>{
 
 
 
-export {Login_Failure  , Login_Success_Authorize , Login_Success_NotAuthorized , Signup_Failure , Signup_Success  , handle_application , clear_jobs , fetch_job , Fetch_Request,Fetch_Login , fetch_my_jobs,post_application ,fetch_applications ,  Fetch_Signup , Change_data , LOGOUT , FETCH_AUTHORIZE_FAILURE , FETCH_AUTHORIZE_SUCCESS , fetch_categories , fetch_job_titles , fetch_jobs , fetch_countries ,  fetch_cities ,  logger , Error_Handler , Clear  , Success_Handler , convertToBase64 , validatePhoneNumber }
+export {Login_Failure  , Login_Success_Authorize , Login_Success_NotAuthorized , Signup_Failure , Signup_Success  , handle_application , clear_jobs , fetch_job , Fetch_Request,Fetch_Login , fetch_my_jobs,post_application ,fetch_applications ,  Fetch_Signup , Change_data , LOGOUT , FETCH_AUTHORIZE_FAILURE , FETCH_AUTHORIZE_SUCCESS , fetch_categories , fetch_job_titles , fetch_jobs , fetch_countries ,  fetch_cities ,  logger , Error_Handler , Clear  , Success_Handler , convertToBase64 , validatePhoneNumber , validateEmail , validatePassword }
 
