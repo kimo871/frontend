@@ -19,7 +19,7 @@ function App() {
 
   useEffect(()=>{
   console.log("BR")
-  setCookie("email","",{ sameSite: 'none', secure: true })
+  setCookie("email","",{ sameSite: 'none', secure: true , domain:"codsoft-1.onrender.com" })
   },[])
 
 
